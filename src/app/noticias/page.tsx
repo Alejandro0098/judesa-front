@@ -4,7 +4,8 @@ import { useState } from 'react'
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import {useRouter, useSearchParams} from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { NavComponent } from '../myComponents/NavComponent'
 
 type NewsItem = {
   id: number
@@ -196,50 +197,55 @@ export default function NewsPagination() {
   };
 
   return (
-    <main className=''>
-      <div className="container mx-auto px-4 py-8">
-        <h1>Noticias</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {currentNews.map((news) => (
-            <Card key={news.id}  className="flex flex-col card-item" onClick={() => router.push(`\\noticia?id=${news.id}`)}>
-              <CardHeader className="pt-5">
-                <img
-                  src={news.imageUrl}
-                  alt={news.title}
-                  className="w-full h-48 object-cover rounded-t-lg"
-                />
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <h2 className="text-xl font-bold mb-2">{news.title}</h2>
-                <p className="text-muted-foreground">{news.subtitle}</p>
-              </CardContent>
-              <CardFooter className="text-sm text-muted-foreground">
-                {new Date(news.date).toLocaleDateString()}
-              </CardFooter>
-            </Card>
-          ))}
+    <>
+      <NavComponent />
+      <main className=''>
+        <div className="container mx-auto px-4 py-8">
+          <h1 className='text-3xl bg-white p-6 text-center font-bold m-12 shadow-xl'>Noticias</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {currentNews.map((news) => (
+              <Card key={news.id} className="flex flex-col card-item" onClick={() => router.push(`\\noticia?id=${news.id}`)}>
+                <CardHeader className="pt-5">
+                  <img
+                    src={news.imageUrl}
+                    alt={news.title}
+                    className="w-full h-48 object-cover rounded-t-lg"
+                  />
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <h2 className="text-xl font-bold mb-2">{news.title}</h2>
+                  <p className="text-muted-foreground">{news.subtitle}</p>
+                </CardContent>
+                <CardFooter className="text-sm text-muted-foreground">
+                  {new Date(news.date).toLocaleDateString()}
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+          <div className="flex justify-center items-center mt-16 mb-8 space-x-4">
+            <Button
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              variant="outline"
+              className='bg-white'
+              >
+              <ChevronLeft className="mr-2 h-4 w-4" /> Anterior
+            </Button>
+            <span className="text-muted-foreground">
+              Página {currentPage} de {totalPages}
+            </span>
+            <Button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              variant="outline"
+              className='bg-white'
+            >
+              Siguiente <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
         </div>
-        <div className="flex justify-center items-center mt-16 mb-8 space-x-4">
-          <Button
-            onClick={handlePrevPage}
-            disabled={currentPage === 1}
-            variant="outline"
-          >
-            <ChevronLeft className="mr-2 h-4 w-4" /> Anterior
-          </Button>
-          <span className="text-muted-foreground">
-            Página {currentPage} de {totalPages}
-          </span>
-          <Button
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-            variant="outline"
-          >
-            Siguiente <ChevronRight className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
-      </div>
-    </main>
+      </main>
 
+    </>
   )
 }

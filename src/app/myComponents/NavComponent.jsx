@@ -14,12 +14,12 @@ export function NavComponent() {
   console.log(isOpen)
   const menuItems = [
     { name: 'Inicio', path: '/' },
-    { name: 'Categorías', path: '/categorias' },
+    { name: 'Hazte socio', path: '/haztesocio' }, // Van a sacar un carnet (tarjeta) que cuesta dinero, poner solo información de lo que es
     { name: 'Noticias', path: '/noticias' },
-    { name: 'Tienda', path: '/tienda' },
+    { name: 'Categorías', path: '/categorias' },
     { name: 'Patrocinadores', path: '/patrocinadores' },
-    // { name: 'Hazte socio', path: '/patrocinadores' }, // Van a sacar un carnet (tarjeta) que cuesta dinero, poner solo información de lo que es
-    // { name: 'Campus y torneos', path: '/patrocinadores' },
+    { name: 'Tienda', path: '/tienda' },
+    { name: 'Campus y torneos', path: '/patrocinadores' },
     { name: 'Sobre nosotros', path: '/about' },
     { name: 'Contacto', path: '/contacto' },
   ]
@@ -41,9 +41,9 @@ export function NavComponent() {
             <SheetContent side="right" style={{ backgroundColor: 'white' }}>
               <SheetTitle></SheetTitle>
               <SheetDescription></SheetDescription>
-              <nav className="flex flex-col space-y-4">
+              <nav className="flex flex-col space-y-8 pt-10 overflow-auto">
                 {menuItems.map((item) => (
-                  <Link key={item.name} href={item.path} className="text-lg font-medium hover:text-maroon-200" onClick={toggleMenu}>
+                  <Link key={item.name} href={item.path} className="lg:text-xl rounded w-fit font-medium nav-item" onClick={toggleMenu}>
                     {item.name}
                   </Link>
                 ))}

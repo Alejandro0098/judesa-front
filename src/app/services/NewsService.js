@@ -1,5 +1,6 @@
-// import { Pool } from 'pg';
 'use client'
+
+
 export default class NewsService {
     
     static baseUrl = 'http://127.0.0.1:8000/api/v1'
@@ -17,11 +18,11 @@ export default class NewsService {
             const response = await fetch(`${this.baseUrl}/new/${id}/`)
             const data = await response.json()
             if (!data.ok) {
-                throw new Error("Couldnt connect to backend")
+                throw new Error("Couldnt connect to backend: ", data)
             }
             return data.data;
-        } catch {
-            throw new Error("Couldnt connect to backend")
+        } catch (error){
+            throw new Error("Couldnt connect to backend:" + error.toString())
         }
     }
 
@@ -29,7 +30,14 @@ export default class NewsService {
         const response = await fetch(`${this.baseUrl}/sponsors/`)
         const data = await response.json()
         console.log(data)
-        return data.data[0];
+        return data.data;
+    }
+    
+    static async getHomeData() {
+        const response = await fetch(`${this.baseUrl}/home/`)
+        const data = await response.json()
+        console.log(data)
+        return data.data;
     }
 
     // static async insertRandomStuff(thing) {

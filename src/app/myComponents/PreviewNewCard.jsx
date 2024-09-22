@@ -2,9 +2,10 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 
-export default function PreviewNewCard({key, title, subtitle, img, handleRedirect}) {
+export default function PreviewNewCard({key, title, subtitle, img, creation_date, handleRedirect}) {
+    console.log(key)
     return (
-        <Card onClick={handleRedirect} className="card-item">
+        <Card onClick={handleRedirect} className="card-item hover:shadow-xl overflow-hidden transform transition duration-100" key={key}>
             <CardContent className="p-4 card-item">
                 <img
                     alt={`Noticia ${key}`}
@@ -21,7 +22,11 @@ export default function PreviewNewCard({key, title, subtitle, img, handleRedirec
                 <p className="text-sm text-muted-foreground">
                     {subtitle}
                 </p>
+                <p className="mt-5 text-gray text-xs">
+                    {creation_date}
+                </p>
             </CardContent>
         </Card>
     )
 }
+

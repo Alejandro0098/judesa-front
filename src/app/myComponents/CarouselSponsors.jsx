@@ -14,36 +14,6 @@ import { useEffect, useState } from "react"
 
 import NewsService from '../services/NewsService.js'
 
-const old_sponsors = [
-    {
-        name: "Patrocinador 1",
-        description: "Descripción del Patrocinador 1 y su apoyo al club.",
-        website: "https://patrocinador1.com",
-        facebook: "https://facebook.com/patrocinador1",
-        twitter: "https://twitter.com/patrocinador1",
-        instagram: "https://instagram.com/patrocinador1",
-        img: 'https://pbs.twimg.com/profile_images/1790706639277834240/ZBQs7hHR_400x400.jpg'
-    },
-    {
-        name: "Patrocinador 2",
-        description: "Descripción del Patrocinador 2 y su apoyo al club.",
-        website: "https://patrocinador2.com",
-        facebook: "https://facebook.com/patrocinador2",
-        twitter: "https://twitter.com/patrocinador2",
-        instagram: "https://instagram.com/patrocinador2",
-        img: 'https://www.liderlogo.es/wp-content/uploads/2022/12/pasted-image-0-6-1.png'
-    },
-    {
-        name: "Patrocinador 3",
-        description: "Descripción del Patrocinador 3 y su apoyo al club.",
-        website: "https://patrocinador3.com",
-        facebook: "https://facebook.com/patrocinador3",
-        twitter: "https://twitter.com/patrocinador3",
-        instagram: "https://instagram.com/patrocinador3",
-        img: 'https://ams3.digitaloceanspaces.com/graffica/2023/02/cocacola-logo.jpeg'
-    },
-]
-
 
 export default function CarouselSponsors({ listOfSponsors }) {
     const [sponsors, setSponsor] = useState(null)
@@ -53,15 +23,15 @@ export default function CarouselSponsors({ listOfSponsors }) {
             .then(sponsors => setSponsor(sponsors))
     }, [])
     return (
-        <Carousel className="w-full max-w-4xl mx-auto" plugins={[
+        <Carousel className="w-full max-w-4xl mx-auto hover:cursor-pointer" plugins={[
             Autoplay({
                 delay: 3000,
             }),
         ]}>
-            <CarouselContent>
+            <CarouselContent >
                 {sponsors?.map((sponsor, index) => (
                     <CarouselItem key={index}>
-                        <div className="p-1">
+                        <div className="p-1 w-full">
                             <Card>
                                 <CardContent className="flex flex-col items-center justify-center p-6">
                                     <img

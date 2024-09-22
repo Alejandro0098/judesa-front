@@ -2,10 +2,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
+import { NavComponent } from "../myComponents/NavComponent"
 
 export default function AboutUs() {
     return (
         <>
+            <NavComponent/>
             <div className="min-h-screen bg-background text-foreground">
                 {/* Header */}
                 <header className="relative h-96 bg-[url('/placeholder.svg?height=400&width=800')] bg-cover bg-center">
@@ -185,7 +187,7 @@ export default function AboutUs() {
                     </section>
 
                     {/* Contacto */}
-                    <section>
+                    {/* <section>
                         <h2 className="text-3xl font-bold mb-4">Contacto</h2>
                         <Card>
                             <CardContent className="p-6">
@@ -200,7 +202,7 @@ export default function AboutUs() {
                                 </ul>
                             </CardContent>
                         </Card>
-                    </section>
+                    </section> */}
                 </main>
             </div>
         </>

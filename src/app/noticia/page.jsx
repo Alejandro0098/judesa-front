@@ -4,6 +4,7 @@ import ErrorComponent from '../myComponents/ErrorComponent'
 import NewsService from "../services/NewsService"
 import Image from "next/image"
 import { useSearchParams, useRouter } from "next/navigation"
+import { NavComponent } from "../myComponents/NavComponent"
 
 export default function Page() {
     const [currentNew, setNew] = useState({})
@@ -20,26 +21,31 @@ export default function Page() {
                 setNew(data)
             })
             .catch(e => {
-                setNew({"error": true})
+                setNew({ "error": e })
             })
         return () => { setNew({}) }
     }, [])
 
     return currentNew?.error
-        ? 
-        <main>
-            <ErrorComponent></ErrorComponent>
-        </main>
-        : 
-        <main>
-             <article className="max-w-5xl mx-auto px-8 py-5 bg-white my-4 rounded-lg shadow-lg">
-                {currentNew && NewHeader(currentNew.new)}
-                <div className="prose max-w-none">
-                    {currentNew?.tags?.map(row => mapTags(row))}
-                </div>
-            </article>
-            <h1 className="w-full text-center p-10 text-3xl font-bold cursor-pointer" onClick={() => router.push('/noticias')}>Volver a noticias</h1>
-        </main>
+        ? <>
+            <NavComponent />
+            <main>
+                <ErrorComponent message={currentNew.error.toString()}></ErrorComponent>
+            </main>
+        </>
+        :
+        <>
+            <NavComponent />
+            <main>
+                <article className="max-w-5xl mx-auto px-8 py-5 bg-white my-4 rounded-lg shadow-lg">
+                    {currentNew && NewHeader(currentNew.new)}
+                    <div className="prose max-w-none">
+                        {currentNew?.tags?.map(row => mapTags(row))}
+                    </div>
+                    {currentNew?.tags && <h1 className="w-full text-center p-10 text-3xl font-bold cursor-pointer" onClick={() => router.push('/noticias')}>Volver a noticias</h1>}
+                </article>
+            </main>
+        </>
 }
 
 function NewHeader(currentNew) {
@@ -111,3 +117,4 @@ function mapTags(tag) {
             </Card>)
     }
 }
+
