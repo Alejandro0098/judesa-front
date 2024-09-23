@@ -93,9 +93,8 @@ export default function Home() {
               </p>
             </div>
           </section>
-          <section id="categorias" className="py-6 md:py-12 lg:py-16 w-full">
+          <section id="categorias" className="py-6 md:py-12 lg:py-16 w-full my-10">
             <div className=" flex justify-center align-center flex-col" >
-              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl mb-8">Nuestras Categorías</h2>
               <div className="text-center xl:w-3/4 w-5/6 self-center">
                 {<CarouselCategories
                   categories={[]}
@@ -108,8 +107,8 @@ export default function Home() {
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl mb-8">Últimas Noticias</h2>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {data?.news?.map((n) => (
-                  <PreviewNewCard
-                    key={n.new.id}
+                  <PreviewNewCard 
+                    id={n.new.id}
                     title={n.new.title}
                     subtitle={n.new.subtitle}
                     img={n.new.image}

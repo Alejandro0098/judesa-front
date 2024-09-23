@@ -8,8 +8,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-  }
+  :root {}
 }
 
 body {
@@ -52,6 +51,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   /* .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -84,6 +84,7 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -98,14 +99,14 @@ body {
 body {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  grid-template-areas: 
+  grid-template-areas:
     'header'
     'main'
     'footer'
   ;
   min-height: 100vh;
   /* background-color: rgb(221, 233, 221); */
-  background-color: #f0f0f0 ;
+  background-color: #f0f0f0;
 }
 
 
@@ -118,8 +119,9 @@ header {
 }
 
 footer {
-  grid-area: footer;  
+  grid-area: footer;
   width: 100%;
+  margin-top: 16px;
 }
 
 .nav-item:hover {
@@ -150,7 +152,7 @@ nav {
 }
 
 .match-won {
-  background-color: rgb(195, 233, 191); 
+  background-color: rgb(195, 233, 191);
 }
 
 .match-draw {
@@ -161,8 +163,11 @@ nav {
   width: 100% !important;
 }
 
-main {
-  /* background-image: url('https://img.freepik.com/vector-gratis/fondo-psicodelico-ilusion-optica_52683-38748.jpg') !important; */
-  background-color: none !important;
+.categorie-card-content {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
+.tab:focus,
+.tab:active {
+  background-color: rgb(243 244 246)!important;
+}

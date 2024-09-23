@@ -27,7 +27,7 @@ export function NavComponent() {
     <header className=" top-0 z-50 w-full border-b text-white p-3 flex flex-col flex justify-between items-center px-10" style={{ backgroundColor: 'brown' }}>
       <div className="container flex h-14 items-center justify-between items-center" >
         <Link href="/" className="flex items-center space-x-2 mr-4">
-          <Dribbble className="h-8 w-8" />
+          <img src='/judesa-blanco.png' alt="" className="h-12 w-12" />
           <span className="sr-only">Club Fútbol Sala</span>
         </Link>
         <div className="ml-auto flex items-center" style={{ backgroundColor: 'brown' }}>

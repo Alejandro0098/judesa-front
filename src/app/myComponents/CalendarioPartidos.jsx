@@ -37,11 +37,11 @@ export default function CalendarioPartidos() {
 
   return (
     <div className="space-y-8 flex flex-col pb-6">
-      <Card className="">
+      {/* <Card className="">
         <CardHeader>
           <CardTitle className="text-center">Calendario de partidos</CardTitle>
         </CardHeader>
-      </Card>
+      </Card> */}
 
       {partidos.map((partido, index) => {
         const fechaPartido = new Date(partido.fecha)

@@ -11,7 +11,8 @@ import {
 } from "@/components/ui/carousel"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Router } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 const categorias = [
   {
@@ -101,52 +102,6 @@ const ProgressDots = ({ totalSlides, currentSlide }) => {
   )
 }
 
-// const useDotButton = (emblaApi) => {
-//   const [selectedIndex, setSelectedIndex] = useState(0)
-//   const [scrollSnaps, setScrollSnaps] = useState([])
-
-//   const onDotButtonClick = useCallback(
-//     (index) => {
-//       if (!emblaApi) return
-//       emblaApi.scrollTo(index)
-//     },
-//     [emblaApi]
-//   )
-
-//   const onInit = useCallback((emblaApi) => {
-//     setScrollSnaps(emblaApi.scrollSnapList())
-//   }, [])
-
-//   const onSelect = useCallback((emblaApi) => {
-//     setSelectedIndex(emblaApi.selectedScrollSnap())
-//   }, [])
-
-//   useEffect(() => {
-//     if (!emblaApi) return
-
-//     onInit(emblaApi)
-//     onSelect(emblaApi)
-//     emblaApi.on('reInit', onInit).on('reInit', onSelect).on('select', onSelect)
-//   }, [emblaApi, onInit, onSelect])
-
-//   return {
-//     selectedIndex,
-//     scrollSnaps,
-//     onDotButtonClick
-//   }
-// }
-
-// export const DotButton = (props) => {
-//   const { children, ...restProps } = props
-
-//   return (
-//     <button type="button" {...restProps}>
-//       {children}
-//     </button>
-//   )
-// }
-
-
 export default function CarouselCategories({ categories }) {
 
   const [api, setApi] = useState()
@@ -166,21 +121,34 @@ export default function CarouselCategories({ categories }) {
     })
   }, [api])
 
+  const router = useRouter()
 
   return (
-
     <div className="w-full max-w-[100vw] overflow-hidden box-border">
-      <h2 className="text-2xl font-bold mb-6 text-center px-4 text-emerald-700">Categorías de Fútbol Sala</h2>
+      <h2 onClick={() => router.push('/categorias')} className="text-3xl md:text-4xl font-bold mb-12 text-center px-4 tracking-tighter gap-3 flex justify-center align-center hover:cursor-pointer hover:underline w-min-content">Nuestras categorías
+      {/* <svg version="1.1" id="icons_1_" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 128 128" style="enable-background:new 0 0 128 128" xml:space="preserve"><style>.st0{display:none}.st1{display:inline}.st2{fill:#0a0a0a}</style><g id="row1_1_"><g id="_x31__3_"><path className={"st2"} d={"M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64 64-28.7 64-64S99.3 0 64 0zm0 121.6C32.2 121.6 6.4 95.8 6.4 64S32.2 6.4 64 6.4s57.6 25.8 57.6 57.6-25.8 57.6-57.6 57.6zM49.2 38.4 73.6 64 49.2 89.6h13.5L86.4 64 62.7 38.4H49.2z"} id={"_x32__2_"}/></g></g></svg> */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        className="st0 st1 st2 self-center font-bolder"
+        viewBox="0 0 128 128"
+      >
+        <path d="M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64 64-28.7 64-64S99.3 0 64 0zm0 121.6C32.2 121.6 6.4 95.8 6.4 64S32.2 6.4 64 6.4s57.6 25.8 57.6 57.6-25.8 57.6-57.6 57.6zM49.2 38.4 73.6 64 49.2 89.6h13.5L86.4 64 62.7 38.4H49.2z" />
+      </svg>
+
+      </h2>
       <div className="relative" >
-        <Carousel className="select-none" setApi={setApi} opts={{
+        <Carousel className="select-none hover:cursor-pointer" setApi={setApi} opts={{
           loop: true,
         }}
         >
-          <CarouselContent className="" >
+          <CarouselContent>
             {categorias.map((categoria, index) => (
-              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                <Card className="w-full bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="flex flex-col items-center p-4">
+              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3" onClick={() => router.push(`/categoria?id=${index}`)}>
+                <Card className="w-full bg-white">
+                  <CardContent className="categorie-card-content flex flex-col items-center p-4">
                     <div className="w-full aspect-[3/2] mb-4 overflow-hidden rounded-lg">
                       <img
                         src={'seleccion.jpg'}

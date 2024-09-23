@@ -1,7 +1,8 @@
 'use client'
 
 // import Image from 'next/image'
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import CalendarioPartidos from '../myComponents/CalendarioPartidos.jsx'
 import { NavComponent } from "../myComponents/NavComponent.jsx"
 
@@ -50,7 +51,7 @@ export default function Categoria() {
   return (
 
     <>
-      <NavComponent/>
+      <NavComponent />
       <main className='px-4 lg:px-20'>
         <h1 className="text-4xl font-bold mb-4 text-center mt-10">{teamInfo.name}</h1>
 
@@ -67,51 +68,63 @@ export default function Categoria() {
             className="rounded-lg shadow-lg mx-auto"
           />
         </div>
+        <section>
+          <Tabs defaultValue="plantilla" aria-label="Dynamic tabs">
+            <TabsList className="grid w-full grid-cols-2 bg-white text-black">
+              <TabsTrigger autoFocus className="tab" value="plantilla">Plantilla</TabsTrigger>
+              <TabsTrigger className="tab" value="partidos">Resultados</TabsTrigger>
+            </TabsList>
+            <TabsContent value="plantilla" className="pt-12">
+              {/* Technical Staff */}
+              <h2 className="text-2xl font-semibold mb-4">Cuerpo Técnico</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                {teamInfo.staff.map((member, index) => (
+                  <Card key={index}>
+                    <CardContent className="p-4 flex items-center space-x-4">
+                      <img
+                        src={`/ancelotti.jpg`}
+                        alt={member.name}
+                        width={100}
+                        height={100}
+                        className="rounded"
+                      />
+                      <div>
+                        <h3 className="text-xl font-semibold">{member.name}</h3>
+                        <p className="text-gray-600">{member.title}</p>
+                        <p className="text-sm text-gray-500">Experiencia: {member.experience}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
 
-        {/* Technical Staff */}
-        <h2 className="text-2xl font-semibold mb-4">Cuerpo Técnico</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {teamInfo.staff.map((member, index) => (
-            <Card key={index}>
-              <CardContent className="p-4 flex items-center space-x-4">
-                <img
-                  src={`/ancelotti.jpg`}
-                  alt={member.name}
-                  width={100}
-                  height={100}
-                  className="rounded"
-                />
-                <div>
-                  <h3 className="text-xl font-semibold">{member.name}</h3>
-                  <p className="text-gray-600">{member.title}</p>
-                  <p className="text-sm text-gray-500">Experiencia: {member.experience}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Player Profiles */}
-        <h2 className="text-2xl font-semibold mb-4">Nuestros Jugadores</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {players.map((player) => (
-            <Card key={player.number}>
-              <CardContent className="p-4">
-                <img
-                  src={`/god.png`}
-                  alt={player.name}
-                  width={200}
-                  height={200}
-                  className="rounded mx-auto mb-4"
-                />
-                <h3 className="text-xl font-semibold text-center">{player.name}</h3>
-                <p className="text-center text-gray-600">{player.position} - #{player.number}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <CalendarioPartidos></CalendarioPartidos>
+              {/* Player Profiles */}
+              <h2 className="text-2xl font-semibold mb-4">Nuestros Jugadores</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                {players.map((player) => (
+                  <Card key={player.number}>
+                    <CardContent className="p-4">
+                      <img
+                        src={`/god.png`}
+                        alt={player.name}
+                        width={200}
+                        height={200}
+                        className="rounded mx-auto mb-4"
+                      />
+                      <h3 className="text-xl font-semibold text-center">{player.name}</h3>
+                      <p className="text-center text-gray-600">{player.position} - #{player.number}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+            <TabsContent className="pt-12" value="partidos">
+              <CalendarioPartidos></CalendarioPartidos>
+            </TabsContent>
+           
+          </Tabs>
+        </section>
+        {/*  */}
       </main>
     </>
   )
