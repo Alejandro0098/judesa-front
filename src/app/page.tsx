@@ -93,13 +93,15 @@ export default function Home() {
               </p>
             </div>
           </section>
-          <section id="categorias" className="py-6 md:py-12 lg:py-16 bg-muted">
-            <div className="container px-4 md:px-6 w-full accordion-wrapper tracking-tighte" >
+          <section id="categorias" className="py-6 md:py-12 lg:py-16 w-full">
+            <div className=" flex justify-center align-center flex-col" >
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl mb-8">Nuestras Categorías</h2>
-                {data.categories && <CarouselCategories
-                  categories={data.categories}
+              <div className="text-center xl:w-3/4 w-5/6 self-center">
+                {<CarouselCategories
+                  categories={[]}
                 />}
               </div>
+            </div>
           </section>
           <section id="noticias" className="py-6 md:py-12 lg:py-16 bg-white st">
             <div className="container px-4 md:px-6">
