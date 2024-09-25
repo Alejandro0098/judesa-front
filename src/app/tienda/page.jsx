@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 
 import { X, ShoppingCart, Globe, Facebook, Twitter, Instagram, Dribbble } from "lucide-react"
 import Skeleton from 'react-loading-skeleton'
-import { NavComponent } from "../myComponents/NavComponent"
+import NavComponent from "../myComponents/NavComponent"
 
 const products = [
   { name: "Camiseta Oficial", description: "Camiseta oficial del equipo", price: 39.99, image: 'https://img.freepik.com/vector-gratis/concepto-uniforme-futbol_52683-43145.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1724544000&semt=ais_hybrid' },

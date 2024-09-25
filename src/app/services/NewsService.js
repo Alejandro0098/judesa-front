@@ -1,6 +1,5 @@
 'use client'
 
-
 export default class NewsService {
     
     static baseUrl = 'http://127.0.0.1:8000/api/v1'
@@ -35,6 +34,20 @@ export default class NewsService {
     
     static async getHomeData() {
         const response = await fetch(`${this.baseUrl}/home/`)
+        const data = await response.json()
+        console.log(data)
+        return data.data;
+    }
+
+    static async getCategories() {
+        const response = await fetch(`${this.baseUrl}/categories/`)
+        const data = await response.json()
+        console.log(data)
+        return data.categories;
+    }
+
+    static async getCategoryById(id) {
+        const response = await fetch(`${this.baseUrl}/category/${id}`)
         const data = await response.json()
         console.log(data)
         return data.data;

@@ -3,8 +3,8 @@
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui//popover";
 import { Button } from '@/components/ui/button';
-import { NavComponent } from '../myComponents/NavComponent';
-import { useState, useEffect } from 'react';
+import NavComponent from '../myComponents/NavComponent';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import NewsService from '../services/NewsService';
 
@@ -126,7 +126,7 @@ export default function PatrocinadoresColaboradores() {
 
     NewsService.getSponsors()
         .then(data => {
-            console.log(data)
+            (data)
             setData(data)
         })
         .catch((e) => {

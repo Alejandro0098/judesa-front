@@ -4,7 +4,8 @@ import ErrorComponent from '../myComponents/ErrorComponent'
 import NewsService from "../services/NewsService"
 import Image from "next/image"
 import { useSearchParams, useRouter } from "next/navigation"
-import { NavComponent } from "../myComponents/NavComponent"
+import NavComponent from "../myComponents/NavComponent"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 
 export default function Page() {
     const [currentNew, setNew] = useState({})
@@ -17,7 +18,6 @@ export default function Page() {
 
         NewsService.getNewById(id)
             .then(data => {
-                console.log(data)
                 setNew(data)
             })
             .catch(e => {
@@ -38,11 +38,22 @@ export default function Page() {
             <NavComponent />
             <main>
                 <article className="max-w-5xl mx-auto px-8 py-5 bg-white my-4 rounded-lg shadow-lg">
+                    {currentNew.tags && <h1
+                        className="flex py-6 text-xl gap-2 font-bold hover:cursor-pointer hover:animate-pulse pb-8"
+                        onClick={() => router.push('/noticias')}
+                    >
+                        <ArrowLeft size={18} className="self-center" /> Volver a Noticias
+                    </h1>}
                     {currentNew && NewHeader(currentNew.new)}
                     <div className="prose max-w-none">
                         {currentNew?.tags?.map(row => mapTags(row))}
                     </div>
-                    {currentNew?.tags && <h1 className="w-full text-center p-10 text-3xl font-bold cursor-pointer" onClick={() => router.push('/noticias')}>Volver a noticias</h1>}
+                    {currentNew.tags && <h1
+                        className="flex py-6 text-xl gap-2 font-bold hover:cursor-pointer hover:animate-pulse pb-8"
+                        onClick={() => router.push('/noticias')}
+                    >
+                        <ArrowLeft size={18} className="self-center" /> Volver a Noticias
+                    </h1>}
                 </article>
             </main>
         </>
@@ -72,7 +83,6 @@ function NewHeader(currentNew) {
 
 function mapTags(tag) {
     if (!tag) return;
-    console.log(tag.toString())
     if (tag.type == "img") {
         return <img
             src={tag.link}

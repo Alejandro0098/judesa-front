@@ -1,10 +1,13 @@
 'use client'
 
-// import Image from 'next/image'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import CalendarioPartidos from '../myComponents/CalendarioPartidos.jsx'
-import { NavComponent } from "../myComponents/NavComponent.jsx"
+import NavComponent from "../myComponents/NavComponent.jsx"
+import { useEffect, useState, Suspense } from "react"
+import NewsService from "../services/NewsService.js"
+import LoadingComponent from '../myComponents/LoadingComponent.jsx'
+import TabCategoryInformation from '../myComponents/TabCategoryInformation.jsx'
+import { useSearchParams } from "next/navigation.js"
+import { useRouter } from "next/navigation.js"
+
 
 const teamInfo = {
   name: "Club Deportivo Fútbol Sala Judesa",
@@ -47,18 +50,40 @@ const upcomingMatches = [
 ]
 
 export default function Categoria() {
+  const [data, setData] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const params = useSearchParams()
+
+  const router = useRouter()
+
+  useEffect(() => {
+    const category_id = params.get('id')
+
+    if (!category_id) router.push('/categorias')
+
+    NewsService.getCategoryById(category_id)
+      .then(newData => {
+        setData(newData)
+        setIsLoading(!isLoading)
+      })
+  }, [])
+
+  if (isLoading) {
+    return <>
+      <NavComponent />
+      <div className="flex justify-center align-center h-full">
+        <LoadingComponent />
+      </div>
+    </>
+  }
+
 
   return (
-
     <>
       <NavComponent />
-      <main className='px-4 lg:px-20'>
-        <h1 className="text-4xl font-bold mb-4 text-center mt-10">{teamInfo.name}</h1>
-
-        {/* Team Category */}
+      <main className='px-4 lg:px-40'>
+        {data.category.name && <h1 className="text-4xl font-bold mb-4 text-center mt-10">{data.category.name}</h1>}
         <p className="text-xl font-semibold mb-8 text-center">Categoría: {teamInfo.category}</p>
-
-        {/* Team Photo */}
         <div className="mb-12">
           <img
             src="/seleccion.jpg"
@@ -69,63 +94,17 @@ export default function Categoria() {
           />
         </div>
         <section>
-          <Tabs defaultValue="plantilla" aria-label="Dynamic tabs">
-            <TabsList className="grid w-full grid-cols-2 bg-white text-black">
-              <TabsTrigger autoFocus className="tab" value="plantilla">Plantilla</TabsTrigger>
-              <TabsTrigger className="tab" value="partidos">Resultados</TabsTrigger>
-            </TabsList>
-            <TabsContent value="plantilla" className="pt-12">
-              {/* Technical Staff */}
-              <h2 className="text-2xl font-semibold mb-4">Cuerpo Técnico</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                {teamInfo.staff.map((member, index) => (
-                  <Card key={index}>
-                    <CardContent className="p-4 flex items-center space-x-4">
-                      <img
-                        src={`/ancelotti.jpg`}
-                        alt={member.name}
-                        width={100}
-                        height={100}
-                        className="rounded"
-                      />
-                      <div>
-                        <h3 className="text-xl font-semibold">{member.name}</h3>
-                        <p className="text-gray-600">{member.title}</p>
-                        <p className="text-sm text-gray-500">Experiencia: {member.experience}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Player Profiles */}
-              <h2 className="text-2xl font-semibold mb-4">Nuestros Jugadores</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                {players.map((player) => (
-                  <Card key={player.number}>
-                    <CardContent className="p-4">
-                      <img
-                        src={`/god.png`}
-                        alt={player.name}
-                        width={200}
-                        height={200}
-                        className="rounded mx-auto mb-4"
-                      />
-                      <h3 className="text-xl font-semibold text-center">{player.name}</h3>
-                      <p className="text-center text-gray-600">{player.position} - #{player.number}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-            <TabsContent className="pt-12" value="partidos">
-              <CalendarioPartidos></CalendarioPartidos>
-            </TabsContent>
-           
-          </Tabs>
+          {data && data.team && data.matches &&
+            <TabCategoryInformation
+              team={data.team}
+              matches={data.matches}
+            />
+          }
         </section>
-        {/*  */}
       </main>
+
+      {/*  */}
+
     </>
   )
 }

@@ -6,12 +6,12 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from 
 import { useState } from "react"
 import Link from "next/link"
 
-export function NavComponent() {
+export default function NavComponent() {
   const [isOpen, setIsOpen] = useState(false)
   
-  console.log(isOpen)
   const toggleMenu = () => setIsOpen(!isOpen)
-  console.log(isOpen)
+
+
   const menuItems = [
     { name: 'Inicio', path: '/' },
     { name: 'Hazte socio', path: '/haztesocio' }, // Van a sacar un carnet (tarjeta) que cuesta dinero, poner solo información de lo que es
@@ -24,10 +24,10 @@ export function NavComponent() {
     { name: 'Contacto', path: '/contacto' },
   ]
   return (
-    <header className=" top-0 z-50 w-full border-b text-white p-3 flex flex-col flex justify-between items-center px-10" style={{ backgroundColor: 'brown' }}>
+    <header className=" top-0 z-50 w-full border-b text-white p-3 flex flex-col flex justify-between items-center sm:px-10 md:px-30 xl:px-48" style={{ backgroundColor: 'brown' }}>
       <div className="container flex h-14 items-center justify-between items-center" >
         <Link href="/" className="flex items-center space-x-2 mr-4">
-          <img src='/judesa-blanco.png' alt="" className="h-12 w-12" />
+          <img src='/judesa-blanco.png' alt="" className="h-max w-12" />
           <span className="sr-only">Club Fútbol Sala</span>
         </Link>
         <div className="ml-auto flex items-center" style={{ backgroundColor: 'brown' }}>
