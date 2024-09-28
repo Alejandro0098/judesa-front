@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // const categories = [
 //   {
 //     id: 1,

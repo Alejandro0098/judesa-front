@@ -14,10 +14,12 @@ import Autoplay from 'embla-carousel-autoplay'
 import { useEffect, useState } from "react"
 
 import NewsService from '../services/NewsService.js'
+import { useRouter } from "next/navigation.js"
 
 
 export default function CarouselSponsors({ listOfSponsors }) {
     const [sponsors, setSponsor] = useState(null)
+    const router = useRouter()
 
     useEffect(() => {
         NewsService.getSponsors()

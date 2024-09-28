@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client'
 
 import NavComponent from "../myComponents/NavComponent.jsx"

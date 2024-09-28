@@ -142,8 +142,8 @@ export default function CarouselCategories({ categories }) {
                       />
                     </div>
                     <h3 className="text-lg font-semibold mb-2 text-center text-emerald-600">{name}</h3>
-                    <p className="text-sm text-gray-600 mb-1 text-center grid grid-row-2"><strong>Entrenador:</strong> {trainer?.name}</p>
-                    <p className="text-sm text-gray-600 mb-1 text-center grid grid-row-2"><strong>Delegado:</strong> {delegate?.name}</p>
+                    <p className="text-sm text-gray-600 mb-1 text-center grid grid-row-2 mb-3"><strong>Entrenador:</strong> {trainer?.name}</p>
+                    <p className="text-sm text-gray-600 mb-1 text-center grid grid-row-2 mb-3"><strong>Delegado:</strong> {delegate?.name}</p>
                     <p className="text-sm font-medium text-center text-emerald-500">Edad: {'??'}</p>
                   </CardContent>
                 </Card>

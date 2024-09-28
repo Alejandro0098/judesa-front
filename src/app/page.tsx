@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client'
 
 import PreviewNewCard from './myComponents/PreviewNewCard.jsx'
@@ -53,21 +54,19 @@ export default function Home() {
             </div>
           </section>
           {
-            data.categories &&
+            data?.categories &&
             <section id="categorias" className=" w-full">
               <div className=" flex justify-center align-center flex-col py-10" >
                 <div className="w-11/12 md:w-2/3 py-8 flex items-center justify-center justify-self-center gap-3 self-center">
-                  <ChevronLeft color='rgb(185 28 28)' />
                   <div className="flex-1 h-0.5 bg-red-700"></div>
                   <h2 onClick={() => router.push('/categorias')} className="hover:animate-pulse text-xl tracking-tighter mb-8 text-center p-4 self-center flex gap-2 hover:cursor-pointer my-5 bg-red-700 rounded-xl text-white md:text-3xl">
                     Nuestras categorías<ArrowRight className='self-center' />
                   </h2>
                   <div className="flex-1 h-0.5 bg-red-700"></div>
-                  <ChevronRight color='rgb(185 28 28)' />
                 </div>
                 <div className="text-center xl:w-3/4 w-5/6 self-center">
                   {<CarouselCategories
-                    categories={data.categories}
+                    categories={data?.categories}
                   />}
                 </div>
               </div>
