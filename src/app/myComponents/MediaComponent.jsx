@@ -81,7 +81,7 @@ export default function SocialMediaPromo() {
         <h2 className="w-full text-2xl font-bold sm:text-3xl mb-8 text-center gap-2">
           Redes sociales
         </h2>
-        <p className="text-center mb-6">
+        <p className="text-center mb-12">
           Mantente al día con todas las novedades de nuestro club. ¡No te pierdas nada!
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

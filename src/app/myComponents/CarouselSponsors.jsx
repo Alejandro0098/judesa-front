@@ -27,19 +27,19 @@ export default function CarouselSponsors({ listOfSponsors }) {
     }, [])
     return (
         <>
-        <h2 onClick={() => router.push('/patrocinadores')} className=" hover:animate-pulse text-2xl font-bold tracking-tighter sm:text-3xl mb-8 text-center p-4 rounded-xl self-center flex gap-2 hover:cursor-pointer underline underline-offset-8">
-        Nuestros Patrocinadores y Colaboradores{<ArrowRight className='self-center' />}
+        <h2 onClick={() => router.push('/patrocinadores')} className=" hover:animate-pulse text-2xl font-bold tracking-tighter sm:text-3xl mb-8 text-center p-4 rounded-xl self-center flex gap-2 hover:cursor-pointer underline-offset-8 bg-none">
+        Patrocinadores y Colaboradores{<ArrowRight className='self-center' />}
         </h2>
-        <Carousel className="w-full max-w-4xl mx-auto hover:cursor-pointer" plugins={[
+        <Carousel className="border-0 w-full max-w-4xl mx-auto hover:cursor-pointer flex-grow-1 bg-transparent rounded" plugins={[
             Autoplay({
-                delay: 3000,
+                delay: 5000,
             }),
         ]}>
-            <CarouselContent >
+            <CarouselContent style={{height: "max-content", border: "none"}}>
                 {sponsors?.map((sponsor, index) => (
                     <CarouselItem key={index}>
-                        <div className="p-1 w-full">
-                            <Card>
+                        <div className="w-full h-full bg-none   ">
+                            <Card className="h-full">
                                 <CardContent className="flex flex-col items-center justify-center p-6">
                                     <img
                                         alt={`Logo ${sponsor.name}`}

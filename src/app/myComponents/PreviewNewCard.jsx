@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 
 export default function PreviewNewCard({id, title, subtitle, img, creation_date, handleRedirect}) {
     return (
-        <Card onClick={handleRedirect} className="card-item hover:shadow-xl overflow-hidden transform transition duration-100" key={id}>
+        <Card onClick={handleRedirect} className="card-item h-full hover:shadow-xl overflow-hidden transform transition duration-100" key={id}>
             <CardContent className="p-4 card-item">
                 <img
                     alt={`Noticia ${id}`}

@@ -1,16 +1,41 @@
-import {nextui} from '@nextui-org/theme';
+import { nextui } from '@nextui-org/theme';
 import type { Config } from "tailwindcss";
 
 const config: Config = {
 	darkMode: ['selector'],
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/components/[object Object].js"
-  ],
+	content: [
+		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+		"./node_modules/@nextui-org/theme/dist/components/[object Object].js"
+	],
 	theme: {
 		extend: {
+			animation: {
+				marquee: 'marquee 60s linear infinite',
+				marquee2: 'marquee2 60s linear infinite',
+				gradient: 'gradient 15s ease infinite',
+			},
+			keyframes: {
+				marquee: {
+					'0%': { transform: 'translateX(0%)' },
+					'100%': { transform: 'translateX(-100%)' },
+				},
+				marquee2: {
+					'0%': { transform: 'translateX(100%)' },
+					'100%': { transform: 'translateX(0%)' },
+				},
+				gradient: {
+					'0%, 100%': {
+						'background-size': '200% 200%',
+						'background-position': 'left center',
+					},
+					'50%': {
+						'background-size': '200% 200%',
+						'background-position': 'right center',
+					},
+				},
+			},
 			colors: {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',

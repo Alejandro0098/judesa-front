@@ -8,6 +8,7 @@ import NavComponent from '../myComponents/NavComponent';
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import NewsService from '../services/NewsService';
+import LoadingComponent from '../myComponents/LoadingComponent.jsx'
 
 
 const patrocinadores = [
@@ -102,29 +103,20 @@ const colaboradores = [
   { nombre: "Transporte Rápido", logo: "/placeholder.svg?height=100&width=100" },
   { nombre: "Imprenta Deportiva", logo: "/placeholder.svg?height=100&width=100" },
   { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
-  { nombre: "Seguros Confianza", logo: "/placeholder.svg?height=100&width=100" },
 ]
 
-export default function PatrocinadoresColaboradores() {
+export default function Page() {
+  return <Suspense fallback={<LoadingComponent/>}>
+    <PatrocinadoresColaboradores/>
+  </Suspense>
+}
+
+function PatrocinadoresColaboradores() {
 
   const [data, setData] = useState(null)
   const params = useSearchParams()
   const router = useRouter()
   useEffect(() => {
-
     NewsService.getSponsors()
         .then(data => {
             (data)

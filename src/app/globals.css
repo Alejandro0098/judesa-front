@@ -105,8 +105,7 @@ body {
     'footer'
   ;
   min-height: 100vh;
-  /* background-color: rgb(221, 233, 221); */
-  background-color: #f0f0f0;
+  background-color: rgb(225, 227, 225);
 }
 
 
@@ -121,11 +120,11 @@ header {
 footer {
   grid-area: footer;
   width: 100%;
-  margin-top: 16px;
 }
 
 .nav-item:hover {
-  text-decoration: underline !important;
+  transform: translate(5px);
+  transition: transform .5s;
 }
 
 .prose {
@@ -138,7 +137,6 @@ nav {
 
 .card-item:hover {
   cursor: pointer;
-  box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
 }
 
 .match {
@@ -170,4 +168,21 @@ nav {
 .tab:focus,
 .tab:active {
   background-color: rgb(243 244 246)!important;
+}
+
+body, main {
+  overflow-x: hidden;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll linear infinite;
 }

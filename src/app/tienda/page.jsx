@@ -2,10 +2,11 @@
 'use client'
 
 import { Card, CardContent } from "@/components/ui/card"
-
+import LoadingComponent from '../myComponents/LoadingComponent.jsx'
 import { X, ShoppingCart, Globe, Facebook, Twitter, Instagram, Dribbble } from "lucide-react"
 import Skeleton from 'react-loading-skeleton'
 import NavComponent from "../myComponents/NavComponent"
+import { Suspense } from "react"
 
 const products = [
   { name: "Camiseta Oficial", description: "Camiseta oficial del equipo", price: 39.99, image: 'https://img.freepik.com/vector-gratis/concepto-uniforme-futbol_52683-43145.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1724544000&semt=ais_hybrid' },
@@ -14,10 +15,15 @@ const products = [
   { name: "Pantalones cortos", description: "Pantalones cortos de entrenamiento", price: 19.99, image: 'https://e7.pngegg.com/pngimages/460/753/png-clipart-shorts-pants-design-white-public-relations.png' },
 ]
 
-export default function Tienda() {
+export default function Page() {
+  return <Suspense fallback={<LoadingComponent />}>
+    <Tienda />
+  </Suspense>
+}
+
+function Tienda() {
   return (
     <>
-      <NavComponent />
       <section id="tienda" className="py-12 md:py-24 lg:py-32 bg-white">
         <div className="container px-4 md:px-6">
           <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl mb-8 text-maroon-900">Tienda del Club</h2>

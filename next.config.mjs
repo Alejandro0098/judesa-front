@@ -5,6 +5,7 @@ const nextConfig = {
     },
     experimental: {
         missingSuspenseWithCSRBailout: false,
+        optimisticClientCache: false,
     }
 };
 

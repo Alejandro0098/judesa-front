@@ -17,7 +17,7 @@ export function FooterComponent() {
                     </div>
                 </div>
             </div>
-            <p className='bg-primary text-primary-foreground py-4 text-center'>&copy; 2023 Club de Fútbol Sala Estrella. Todos los derechos reservados.</p>
+            {/* <p className='bg-primary text-primary-foreground py-4 text-center'>&copy; 2023 Club de Fútbol Sala Estrella. Todos los derechos reservados.</p> */}
         </footer>
     </>
     )
