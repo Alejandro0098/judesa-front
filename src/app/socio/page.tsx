@@ -1,6 +1,7 @@
 'use client'
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 
 import ContactPopover from '../myComponents/ContactPopover.jsx'
 
@@ -8,6 +9,9 @@ import { Check, Star, Ticket, ShoppingBag, Trophy, Info, CreditCard, Copy } from
 import { motion } from "framer-motion"
 
 export default function TarjetaSocio() {
+
+  const contactButton = <Button className='bg-gradient-to-r from-yellow-400 to-orange-400 text-black font-bold py-3 text-lg transition-all duration-300'>Hazte Socio</Button>
+                
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-600 to-purple-700 flex flex-col items-center justify-center p-4 overflow-hidden">
@@ -59,7 +63,11 @@ export default function TarjetaSocio() {
               </ul>
             </CardContent>
             <CardFooter className='flex justify-center'>
-              <ContactPopover/>
+              <ContactPopover
+                title={'Contacta con nosotros para hacerte socio'}
+                subtitle={' Te resolveremos cualquier duda que tengas'}
+                button={contactButton}
+              />
             </CardFooter>
           </Card>
 

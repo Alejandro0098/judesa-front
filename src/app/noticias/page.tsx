@@ -6,7 +6,10 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Newspaper, Users, Calendar } from 'lucide-react'
 import NavComponent from '../myComponents/NavComponent.jsx'
+import PageTitle from '../myComponents/PageTitle.jsx'
+
 
 
 export default function NewsPagination() {
@@ -54,12 +57,10 @@ export default function NewsPagination() {
 
   return (
     <>
-      <main className='bg-gradient-to-br from-blue-100 to-red-100 xl:p-12 flex flex-col'>
-        <div className="container mx-auto px-4 py-8 flex flex-col">
-          <div className='flex justify-center align-center mb-12 gap-6 w-5/6 self-center'>
-            <h1 className='self-center text-center text-2xl md:text-4xl bg-white px-12 py-6 w-fit rounded-xl shadow-xl'> Noticias del club</h1>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <main className='bg-gray-800 flex flex-col'>
+        <div className="flex flex-col">
+            <PageTitle titulo="Noticias" icono={<Newspaper className="h-full"/>}/>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 md:p-16 mt-4">
             {currentNews.map((news) => (
               <Card key={news.id} className="flex flex-col card-item" onClick={() => router.push(`\\noticia?id=${news.id}`)}>
                 <CardHeader className="pt-5">
@@ -79,7 +80,7 @@ export default function NewsPagination() {
               </Card>
             ))}
           </div>
-          <div className="flex justify-center items-center mt-16 mb-8 space-x-4 bg-gray-300 w-fit self-center p-5 rounded-xl shadow-xl">
+          <div className="flex justify-center items-center mt-8 md:mt-0 mb-16 space-x-4 bg-gray-500 w-fit self-center p-5 rounded-xl shadow-xl">
             <Button
               onClick={handlePrevPage}
               disabled={currentPage === 1}
@@ -88,7 +89,7 @@ export default function NewsPagination() {
             >
               <ChevronLeft className="mr-2 h-4 w-4" /> Anterior
             </Button>
-            <span className="text-muted-foreground">
+            <span className="text-black">
               Página {currentPage} de {totalPages}
             </span>
             <Button

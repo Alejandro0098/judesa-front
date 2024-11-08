@@ -44,7 +44,7 @@ function New() {
         :
         <>
             <NavComponent />
-            <main>
+            <main className="bg-gray-800">
                 <article className="max-w-5xl mx-auto px-8 py-5 bg-white my-4 rounded-lg shadow-lg">
                     {currentNew.tags && <h1
                         className="flex py-6 text-xl gap-2 font-bold hover:cursor-pointer hover:animate-pulse pb-8"

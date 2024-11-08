@@ -70,8 +70,8 @@ export default function TeamPage() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-200 to-white">
-      <header className="py-8 sm:px-6 lg:px-8 mb-12 flex flex-col align-center bg-cyan-950 shadow-md">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-200 to-gray-300">
+      <header className="py-8 sm:px-6 lg:px-8 mb-12 flex flex-col align-center bg-gray-800 shadow-md">
         <motion.h1
           className="text-3xl py-5 text-center flex flex-col font-extrabold text-center text-white drop-shadow-md"
           initial={{ opacity: 0, y: -50 }}

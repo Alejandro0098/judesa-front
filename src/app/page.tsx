@@ -187,7 +187,7 @@ function Home() {
         {
           data?.categories &&
           <section id="categorias" className=" w-full bg-gray-800">
-            <div className=" flex justify-center align-center flex-col py-10 bg-gray-800" >
+            <div className=" flex justify-center align-center flex-col pb-10 bg-gray-800" >
               <div className="w-11/12 md:w-2/3 py-8 flex items-center justify-center justify-self-center gap-3 self-center">
                 <div className="flex-1 h-1 bg-red-700"></div>
                 <h2 onClick={() => router.push('/categorias')} className="hover:animate-pulse text-xl tracking-tighter mb-8 text-center p-4 self-center flex gap-2 hover:cursor-pointer my-5 bg-red-700 rounded text-white md:text-3xl bg-green-500">
@@ -203,7 +203,6 @@ function Home() {
             </div>
             <div className='flex flex-col p-2'>
               <ProximosPartidos />
-
             </div>
 
           </section>
@@ -246,7 +245,10 @@ function Home() {
             </div>
           </div>
         </section>
-        <section id="patrocinadores" className="shadow-xl bg-gradient-to-r from-red-800 from-5% via-red-600 via-30% to-red-800 to-95% " style={{ boxShadow: 'rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px' }}>
+        <section>
+          <Gallery/>
+        </section>
+        <section id="patrocinadores" className="pb-12 shadow-xlanimate-gradient bg-gradient-to-r from-red-950 via-red-600 to-red-950 text-white" style={{ boxShadow: 'rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px' }}>
           <div className="py-7 px-4 md:px-6 w-full accordion-wrapper flex flex-col text-white border-0" style={{ backgroundImage: `url(${url_sponsors})`, backgroundRepeat: 'repeat' }}>
             {/* <div className="py-7 px-4 md:px-6 w-full accordion-wrapper flex flex-col  bg-gray-700" style={{background: 'radial-gradient(circle at 18.7% 37.8%, rgb(245, 245, 245) 0%, rgb(225, 234, 238) 90%)'}}> */}
             {data.sponsors &&
@@ -258,9 +260,6 @@ function Home() {
               <CarouselLogos />
             </section>
           </div>
-        </section>
-        <section>
-          <Gallery/>
         </section>
 
         {/* <section className="bg-white shadow-xl ">

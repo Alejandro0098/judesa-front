@@ -617,6 +617,146 @@ function SponsorLogosV2() {
   )
 }
 
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { InfoIcon, Phone, Mail } from 'lucide-react'
+
+// Datos de ejemplo para los productos
+
+
+const productos = [
+  {
+    id: 1,
+    nombre: "Camiseta Clásica",
+    descripcion: "Camiseta de algodón suave y cómoda",
+    tejido: "100% Algodón",
+    precio: 19.99,
+    imagen: "/coca"
+  },
+  {
+    id: 2,
+    nombre: "Pantalón Vaquero",
+    descripcion: "Pantalón vaquero de corte recto",
+    tejido: "98% Algodón, 2% Elastano",
+    precio: 49.99,
+    imagen: "/coca"
+  },
+  {
+    id: 3,
+    nombre: "Vestido de Verano",
+    descripcion: "Vestido ligero y fresco para el verano",
+    tejido: "100% Lino",
+    precio: 39.99,
+    imagen: "/coca"
+  },
+]
+
+function CatalogoProductos() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <Alert className="mb-8">
+        <InfoIcon className="h-4 w-4" />
+        <AlertTitle>Información de compra</AlertTitle>
+        <AlertDescription>
+          Para realizar una compra, por favor contacte directamente con:
+          <div className="mt-2">
+            <p className="font-semibold">María García</p>
+            <p className="flex items-center"><Phone className="h-4 w-4 mr-2" /> +34 123 456 789</p>
+            <p className="flex items-center"><Mail className="h-4 w-4 mr-2" /> maria@ejemplo.com</p>
+          </div>
+        </AlertDescription>
+      </Alert>
+
+      <h1 className="text-3xl font-bold mb-8 text-center">Nuestros Productos</h1>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {productos.map((producto) => (
+          <motion.div
+            key={producto.id}
+            className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="relative h-48 sm:h-64">
+              <Image
+                src={producto.imagen}
+                alt={producto.nombre}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="p-4 flex-grow">
+              <h2 className="text-xl font-semibold mb-2">{producto.nombre}</h2>
+              <p className="text-gray-600 mb-2">{producto.descripcion}</p>
+              <p className="text-sm text-gray-500 mb-2">Tejido: {producto.tejido}</p>
+              <p className="text-lg font-bold text-primary">{producto.precio.toFixed(2)} €</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+import { FC, ReactElement } from 'react'
+import { Newspaper, Users, Calendar } from 'lucide-react'
+
+
+const EncabezadoSeccion = ({ titulo, icono }) => {
+  return (
+    <div className="relative overflow-hidden font-playfair">
+      <div className="animate-gradient bg-gradient-to-r from-red-900 via-black to-red-900 text-white py-8 px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-start">
+          {icono && <div className="w-10 h-10 mr-4 text-red-400">{icono}</div>}
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-wide">{titulo}</h2>
+        </div>
+      </div>
+      <div className="absolute bottom-0 left-0 w-full h-2 bg-red-500 transform -skew-x-12"></div>
+    </div>
+  )
+}
+
+const AnimatedBackground = () => (
+  <style jsx global>{`
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+    .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .animate-gradient {
+      background-size: 1000% 1000%;
+      animation: gradientAnimation 10s ease infinite;
+    }
+  `}</style>
+)
+
+function Encabezados() {
+  return (
+    <>
+      <AnimatedBackground />
+      <div className="space-y-8">
+        <EncabezadoSeccion titulo="Noticias" icono={<Newspaper className="h-full" />} />
+        <EncabezadoSeccion titulo="Equipos" icono={<Users className="h-full"/>} />
+        <EncabezadoSeccion titulo="Calendario" icono={<Calendar className="h-full"/>} />
+      </div>
+    </>
+  )
+}
+
 export default function Main() {
   return <main>
     <GallerySection />
@@ -629,6 +769,8 @@ export default function Main() {
     <ResultadosPasados/>
     <ResultadosPasadosv2/>
     <SponsorLogosV2 />
+    <CatalogoProductos />
+    <Encabezados />
 
   </main>
 

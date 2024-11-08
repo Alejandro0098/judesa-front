@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Mail, Phone, MessageCircle, Copy, Check } from 'lucide-react'
 import { useToast } from "../../hooks/use-toast.ts"
 
-export default function Component() {
+export default function ContactPopover({title, subtitle, button}) {
     const [copied, setCopied] = useState(null)
     const { toast } = useToast()
     const contactInfo = {
@@ -32,15 +32,19 @@ export default function Component() {
     return (
         <Popover>
             <PopoverTrigger asChild>
-                <Button className='bg-gradient-to-r from-yellow-400 to-orange-400 text-black font-bold py-3 text-lg transition-all duration-300'>Hazte Socio</Button>
+                {button}
             </PopoverTrigger>
             <PopoverContent className="w-96 bg-card text-card-foreground shadow-lg p-5">
                 <div className="grid gap-4">
                     <div className="space-y-2">
-                        <h4 className="font-medium leading-none">Contacta con nosotros para hacerte socio</h4>
+                        <h4 className="font-medium leading-none">{title}</h4>
+                        <p className="text-sm text-muted-foreground">
+                            {subtitle}
+                        </p>
+                        {/* <h4 className="font-medium leading-none">Contacta con nosotros para hacerte socio</h4>
                         <p className="text-sm text-muted-foreground">
                             Te resolveremos cualquier duda que tengas.
-                        </p>
+                        </p> */}
                     </div>
                     <div className="grid gap-2">
                         <div className="grid grid-cols-4 items-center gap-4">

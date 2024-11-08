@@ -27,7 +27,7 @@ export default function CarouselSponsors({ listOfSponsors }) {
     }, [])
     return (
         <>
-        <h2 onClick={() => router.push('/patrocinadores')} className=" hover:animate-pulse text-2xl font-bold tracking-tighter sm:text-3xl mb-8 text-center p-4 rounded-xl self-center flex gap-2 hover:cursor-pointer underline-offset-8 bg-none">
+        <h2 onClick={() => router.push('/patrocinadores')} className=" hover:animate-pulse text-2xl font-bold tracking-tighter sm:text-3xl mb-8 text-center p-4 rounded-xl self-center flex gap-2 hover:cursor-pointer underline-offset-8 bg-white text-black hover:animate-pulse">
         Patrocinadores y Colaboradores{<ArrowRight className='self-center' />}
         </h2>
         <Carousel className="border-0 w-full max-w-4xl mx-auto hover:cursor-pointer flex-grow-1 bg-transparent rounded" plugins={[

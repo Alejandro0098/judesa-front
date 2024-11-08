@@ -3,7 +3,7 @@ import { Facebook, Instagram, Twitter } from 'lucide-react'
 
 export function FooterComponent() {
     return (<>
-        <footer className="bg-gray-800 text-white pt-8 self-end justify-self-end">
+        <footer className="bg-gray-900 text-white pt-8 self-end justify-self-end">
             <div className="container mx-auto px-4 pb-5">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="mb-4 md:mb-0">
