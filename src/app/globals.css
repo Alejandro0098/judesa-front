@@ -122,10 +122,10 @@ footer {
   width: 100%;
 }
 
-.nav-item:hover {
+/* .nav-item:hover {
   transform: translate(5px);
   transition: transform .5s;
-}
+} */
 
 .prose {
   padding-top: 32px;
@@ -185,4 +185,33 @@ body, main {
 
 .animate-scroll {
   animation: scroll linear infinite;
+}
+
+.stellate {
+  background-image: url('https://i.pinimg.com/originals/2f/f9/4d/2ff94dfff599bc37a27450a858612763.gif');
+  background-image: url('https://videocdn.cdnpk.net/videos/8c39c74a-4491-40dd-832d-819cf3d25bcc/horizontal/thumbnails/small.jpg');
+  background-image: url('https://manzanares.net/wp-content/uploads/2023/12/futbol-femenino-balon-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 1000% 1000%;
+  animation: gradientAnimation 10s ease infinite;
 }

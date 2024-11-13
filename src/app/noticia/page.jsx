@@ -2,7 +2,7 @@
 'use client'
 import { useState, useEffect, Suspense } from "react"
 import ErrorComponent from '../myComponents/ErrorComponent'
-import NewsService from "../services/NewsService"
+import NewsService from "../../services/NewsService"
 import Image from "next/image"
 import { useSearchParams, useRouter } from "next/navigation"
 import NavComponent from "../myComponents/NavComponent"

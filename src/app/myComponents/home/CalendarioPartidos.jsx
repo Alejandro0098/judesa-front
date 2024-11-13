@@ -1,12 +1,12 @@
 import MatchCard from './MatchCard.jsx'
 
 const partidos = [
-  { fecha: "2024-09-29", equipo: "Equipo E", esLocal: true, localizacion: "Pabellón Municipal", horario: "19:00" },
-  { fecha: "2024-09-22", equipo: "Equipo D", esLocal: false, localizacion: "Pabellón D", horario: "18:30" },
-  { fecha: "2024-09-15", equipo: "Equipo C", resultado: "2 - 2", esLocal: true, localizacion: "Pabellón Municipal", horario: "20:00" },
-  { fecha: "2024-08-01", equipo: "Equipo A", resultado: "3 - 2", esLocal: true, localizacion: "Pabellón Municipal", horario: "18:00" },
-  { fecha: "2024-08-08", equipo: "Equipo B", resultado: "2 - 1", esLocal: false, localizacion: "Polideportivo B", horario: "19:30" },
-  { fecha: "2024-08-01", equipo: "Equipo A", resultado: "3 - 2", esLocal: true, localizacion: "Pabellón Municipal", horario: "18:00" },
+  { date: "2024-09-29", rival: "Equipo E", is_local: true, location: "Pabellón Municipal", time: "19:00" },
+  { date: "2024-09-22", rival: "Equipo D", is_local: false, location: "Pabellón D", horario: "18:30" },
+  { date: "2024-09-15", rival: "Equipo C", resultado: "2 - 2", is_local: true, location: "Pabellón Municipal", time: "20:00" },
+  { date: "2024-08-01", rival: "Equipo A", resultado: "3 - 2", is_local: true, location: "Pabellón Municipal", time: "18:00" },
+  { date: "2024-08-08", rival: "Equipo B", resultado: "2 - 1", is_local: false, location: "Polideportivo B", time: "19:30" },
+  { date: "2024-08-01", rival: "Equipo A", resultado: "3 - 2", is_local: true, location: "Pabellón Municipal", time: "18:00" },
 ]
 
 export default function CalendarioPartidos({matches}) {

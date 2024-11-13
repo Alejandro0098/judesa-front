@@ -24,7 +24,7 @@ const imagenes = [
 
 export default function Gallery() {
     const [imagenSeleccionadaIndex, setImagenSeleccionadaIndex] = useState(null)
-    const [imagenesMostradas, setImagenesMostradas] = useState(6)
+    const [imagenesMostradas, setImagenesMostradas] = useState(18)
     const [direction, setDirection] = useState(0)
 
     const cargarMas = () => {
@@ -70,9 +70,9 @@ export default function Gallery() {
     }
 
     return (
-        <div className="flex flex-col mx-auto md:px-8 lg:px-36 px-2 py-8 bg-gray-800 pb-16">
-            <h2 className="w-full self-center p-2 md:pt-8 bg-white text-xl md:text-3xl font-bold md:mt-12 text-center mt-4 md:mt-8 pb-6" style={{ borderRadius: '16px 16px 0 0' }}><Images className='inline mr-5' /><p className='inline'>Galería de Fotos</p> <Images className='inline ml-2' /></h2>
-            <div className="pb-8 px-4 pt-4 lg:px-16 bg-white grid grid-cols-2 md:grid-cols-3 gap-4" style={{ borderRadius: '0 0 16px 16px' }}>
+        <div className="flex flex-col bg-white w-full h-full p-8">
+            <h2 className="w-full self-center bg-white text-xl md:text-3xl font-bold text-center pb-6"><Images className='inline mr-5' /><p className='inline'>Galería de Fotos</p> <Images className='inline ml-2' /></h2>
+            <div className="md:pb-8 md:px-4 pt-4 bg-white grid grid-cols-2 md:grid-cols-3 gap-4 h-full w-full" >
                 {imagenes.slice(0, imagenesMostradas).map((imagen, index) => (
                     <div key={index} className=" relative aspect-video cursor-pointer overflow-hidden rounded-lg transition-transform hover:scale-105" style={{ boxShadow: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px' }}>
                         <Image
@@ -85,13 +85,13 @@ export default function Gallery() {
                         />
                     </div>
                 ))}
-                {imagenesMostradas < imagenes.length && (
+                {/* {imagenesMostradas < imagenes.length && (
                     <div className="mt-1 text-center flex w-full col-span-2 md:col-span-3 flex-col">
                         <Button className="bg-white self-center text-xs md:text-md px-2 py-1 h-min" style={{boxShadow: 'rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset'}} onClick={cargarMas} variant="outline">
                             Mostrar más
                         </Button>
                     </div>
-                )}
+                )} */}
             </div>
 
 

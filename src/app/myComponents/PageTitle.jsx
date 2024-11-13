@@ -24,7 +24,7 @@ const AnimatedBackground = () => (
 
     .animate-gradient {
       background-size: 1000% 1000%;
-      animation: gradientAnimation 3s ease-in infinite;
+      animation: gradientAnimation 5s ease-in infinite;
     }
   `}</style>
 )
@@ -34,7 +34,7 @@ export default function PageTitle({ titulo, icono }) {
         <>
             <AnimatedBackground />
             <div className="relative overflow-hidden font-playfair">
-                <div className="animate-gradient bg-gradient-to-r from-gray-950 via-red-950 to-gray-950 text-white py-8 px-4 sm:px-6 lg:px-8">
+                <div className="animate-gradient bg-gradient-to-r from-gray-950 via-red-900 to-gray-950 text-white py-8 px-4 sm:px-6 lg:px-8">
                     <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-center">
                         {icono && <div className="w-10 h-10 mr-1 text-red-400">{icono}</div>}
                         <h2 className="text-3xl sm:text-4xl font-bold tracking-wide">{titulo}</h2>

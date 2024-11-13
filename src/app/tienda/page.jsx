@@ -3,6 +3,7 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import LoadingComponent from '../myComponents/LoadingComponent.jsx'
+import NoOnlineShop from '../myComponents/NoOnlineShop.jsx'
 import ContactPopover from '../myComponents/ContactPopover.jsx'
 import { X, ShoppingCart, Globe, Facebook, Twitter, Instagram, Dribbble } from "lucide-react"
 import Skeleton from 'react-loading-skeleton'
@@ -59,13 +60,14 @@ function Tienda() {
 
   return (
     <main className="">
-      <section id="tienda" className="flex flex-col bg-gray-800">
+      <section id="tienda" className="flex flex-col bg-gray-800 gap-12">
         <PageTitle titulo="Tienda" icono={<ShoppingBagIcon className="h-full" />} />
-        <div className="p-2 rounded-xl mb-12 mx-4 md:mx-16 flex flex-col mt-4">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 p-4">
+        <NoOnlineShop/>
+        <div className="mb-12 md:mx-4 md:mx-16 flex flex-col">
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4 p-4">
             {products.map((product, index) => (
-              <Card key={index} className="bg-maroon-50 shadow-xl bg-white">
-                <CardContent className="p-4 rounded-xl flex flex-col gap-2" style={{ 'boxShadow': 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px' }}>
+              <Card key={index} className="bg-maroon-50 shadow-xl bg-white rounded-none">
+                <CardContent className="p-4 flex flex-col gap-2 h-full rounded-none" style={{ 'boxShadow': 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px' }}>
                   <img
                     alt={product.name}
                     className="w-full h-48 object-cover rounded-lg mb-4"
@@ -87,11 +89,11 @@ function Tienda() {
                   </div>
                   <p className="font-bold text-maroon-900 my-1 italic underline text-2xl self-center my-2">{product.price.toFixed(2)} €</p>
 
-                  <ContactPopover
+                  {/* <ContactPopover
                     title={'Contacta con nosotros para comprar el artículo'}
                     subtitle={''}
                     button={contactButton}
-                  />
+                  /> */}
 
                 </CardContent>
               </Card>

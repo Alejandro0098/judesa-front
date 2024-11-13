@@ -6,7 +6,8 @@ const nextConfig = {
     experimental: {
         missingSuspenseWithCSRBailout: false,
         optimisticClientCache: false,
-    }
+    },
+    fastRefresh: true,
 };
 
 export default nextConfig;

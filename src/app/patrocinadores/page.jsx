@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import NavComponent from '../myComponents/NavComponent';
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import NewsService from '../services/NewsService';
+import NewsService from '../../services/NewsService';
 import LoadingComponent from '../myComponents/LoadingComponent.jsx'
 
 

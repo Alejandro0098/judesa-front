@@ -76,15 +76,15 @@ export default function SocialMediaPromo() {
   ]
 
   return (
-    <Card className="w-full max-w-4xl mx-auto pt-8">
-      <CardContent>
+    <Card className="w-full h-full rounded-none border-none">
+      <CardContent className="h-full p-8 border-none">
         <h2 className="w-full text-2xl font-bold sm:text-3xl mb-8 text-center gap-2">
           Redes sociales
         </h2>
         <p className="text-center mb-12">
           Mantente al día con todas las novedades de nuestro club. ¡No te pierdas nada!
         </p>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2 h-full">
           {socialNetworks.map((network, index) => (
             <div
               key={index}

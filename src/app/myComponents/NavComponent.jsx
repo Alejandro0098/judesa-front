@@ -46,12 +46,12 @@ export default function NavComponent() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-red-800 border-none text-white">
+            <SheetContent side="right" className="bg-gradient-to-br from-red-900 to-red-500 border-none text-white">
               <SheetTitle></SheetTitle>
               <SheetDescription></SheetDescription>
-              <nav className="flex flex-col space-y-8 pt-10 overflow-auto">
+              <nav className="flex flex-col space-y-12 pt-10 overflow-auto">
                 {menuItems.map((item) => (
-                  <a key={item.name} href={item.path} className="rounded w-fit font-medium nav-item" onClick={toggleMenu}>
+                  <a key={item.name} href={item.path} className="rounded w-fit text-base md:text-lg nav-item hover:animate-pulse" onClick={toggleMenu}>
                     {item.name}
                   </a>
                 ))}

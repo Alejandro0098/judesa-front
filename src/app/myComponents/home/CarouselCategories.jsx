@@ -14,6 +14,8 @@ import {
 import { Card, CardContent } from "@/components/ui/card"
 import { ChevronLeft, ChevronRight, } from "lucide-react"
 import { useRouter } from "next/navigation"
+import CategoriesService from '../../../services/CategoriesService'
+import { Skeleton } from "@/components/ui/skeleton"
 
 const categorias = [
   {
@@ -107,6 +109,8 @@ export default function CarouselCategories({ categories }) {
   const [api, setApi] = useState()
   const [current, setCurrent] = useState(0)
   const [count, setCount] = useState()
+  const [data, setData] = useState([])
+  const [isLoading, serIsLoading] = useState(true)
   const router = useRouter()
 
   useEffect(() => {
@@ -122,44 +126,61 @@ export default function CarouselCategories({ categories }) {
     })
   }, [api])
 
-  return (
-    <div className="w-full max-w-[100vw] overflow-hidden box-border">
-      <div className="relative" >
-        <Carousel className="select-none hover:cursor-pointer" setApi={setApi} opts={{
-          loop: true,
-        }}
-        >
-          <CarouselContent>
-            {categories.map(({id, name, trainer, delegate, image}) => (
-              <CarouselItem key={id} className="pl-4 md:basis-1/2 lg:basis-1/3" onClick={() => router.push(`/categoria?id=${id}`)}>
-                <Card className="w-full bg-white">
-                  <CardContent className="categorie-card-content flex flex-col items-center p-4">
-                    <div className="w-full aspect-[3/2] mb-4 overflow-hidden rounded-lg">
-                      <img
-                        src={image}
-                        alt={`Categoría ${name}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <h3 className="text-lg font-semibold mb-2 text-center text-emerald-600">{name}</h3>
-                    <p className="text-sm text-gray-600 mb-1 text-center grid grid-row-2 mb-3"><strong>Entrenador:</strong> {trainer?.name}</p>
-                    <p className="text-sm text-gray-600 mb-1 text-center grid grid-row-2 mb-3"><strong>Delegado:</strong> {delegate?.name}</p>
-                    <p className="text-sm font-medium text-center text-emerald-500">Edad: {'??'}</p>
-                  </CardContent>
-                </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 bg-red-700 text-white hover:bg-red-500">
-            <ChevronLeft className="h-6 w-6" />
-          </CarouselPrevious>
-          <CarouselNext className={`absolute right-2 top-1/2 -translate-y-1/2 bg-red-700 text-white hover:bg-red-500`}>
-            <ChevronRight className="h-6 w-6"/>
-          </CarouselNext>
-        </Carousel>
+  useEffect(() => {
+    CategoriesService.getCategories()
+      .then(res => {
+        setData(res)
+        serIsLoading(!isLoading)
+      })
+  }, [])
+  
+
+  if (!isLoading) {
+    return (
+      <div className="w-full max-w-[100vw] overflow-hidden box-border">
+        <div className="relative" >
+          <Carousel className="select-none hover:cursor-pointer" setApi={setApi} opts={{
+            loop: true,
+          }}
+          >
+            <CarouselContent>
+              {data.map(({id, name, trainer, delegate, image}) => (
+                <CarouselItem key={id} className="pl-4 md:basis-1/2 lg:basis-1/3" onClick={() => router.push(`/categoria?id=${id}`)}>
+                  <Card className="w-full bg-white">
+                    <CardContent className="categorie-card-content flex flex-col items-center p-4">
+                      <div className="w-full aspect-[3/2] mb-4 overflow-hidden rounded-lg">
+                        <img
+                          src={image}
+                          alt={`Categoría ${name}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2 text-center text-emerald-600">{name}</h3>
+                      <p className="text-sm text-gray-600 mb-1 text-center grid grid-row-2 mb-3"><strong>Entrenador:</strong> {trainer?.name}</p>
+                      <p className="text-sm text-gray-600 mb-1 text-center grid grid-row-2 mb-3"><strong>Delegado:</strong> {delegate?.name}</p>
+                      <p className="text-sm font-medium text-center text-emerald-500">Edad: {'??'}</p>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 bg-red-700 text-white hover:bg-red-500">
+              <ChevronLeft className="h-6 w-6" />
+            </CarouselPrevious>
+            <CarouselNext className={`absolute right-2 top-1/2 -translate-y-1/2 bg-red-700 text-white hover:bg-red-500`}>
+              <ChevronRight className="h-6 w-6"/>
+            </CarouselNext>
+          </Carousel>
+        </div>
+        <ProgressDots totalSlides={data.length} currentSlide={current} />
       </div>
-      <ProgressDots totalSlides={categories.length} currentSlide={current} />
-    </div>
-  )
+    )
+  }
+
+  return <div className="w-full h-96 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 overflow-hidden grid-rows-1">
+    <Skeleton className="h-full min-w-[200px]" />
+    <Skeleton className="h-full min-w-[200px]" />
+    <Skeleton className="h-full min-w-[200px]" />
+  </div>
 }
 

@@ -89,7 +89,7 @@ export default function NewsPagination() {
             >
               <ChevronLeft className="mr-2 h-4 w-4" /> Anterior
             </Button>
-            <span className="text-black">
+            <span className="text-black text-xs md:text-sm">
               Página {currentPage} de {totalPages}
             </span>
             <Button

@@ -372,7 +372,7 @@ function SponsorLogos() {
 
   return (
     <div className="w-full overflow-hidden bg-white py-10" ref={containerRef}>
-      <div 
+      <div
         className="flex animate-scroll"
         style={{
           width: `${totalWidth * 2}px`,
@@ -380,10 +380,10 @@ function SponsorLogos() {
         }}
       >
         {[...sponsors, ...sponsors].map((sponsor, index) => (
-          <div 
-            key={index} 
+          <div
+            key={index}
             className="flex items-center justify-center bg-gray-50 rounded-lg shadow-md mx-4"
-            style={{ 
+            style={{
               width: `${logoWidth - 32}px`,
               height: `${logoWidth / 2}px`
             }}
@@ -588,9 +588,9 @@ function SponsorLogosV2() {
           {logos.map((logo, index) => (
             <div key={index} className="mx-8 flex h-32 w-64 items-center justify-center bg-white">
               <div className="relative h-full w-full">
-                <Image 
-                  src={index % 2 == 0 ? '/belligod.png' : '/carva.jpg'} 
-                  alt={`Sponsor logo ${index + 1}`} 
+                <Image
+                  src={index % 2 == 0 ? '/belligod.png' : '/carva.jpg'}
+                  alt={`Sponsor logo ${index + 1}`}
                   fill
                   className="object-contain"
                 />
@@ -602,9 +602,9 @@ function SponsorLogosV2() {
           {logos.map((logo, index) => (
             <div key={index} className="mx-8 flex h-32 w-64 items-center justify-center">
               <div className="relative h-full w-full">
-                <Image 
-                  src={index % 2 == 0 ? '/belligod.png' : '/carva.jpg'} 
-                  alt={`Sponsor logo ${index + 1}`} 
+                <Image
+                  src={index % 2 == 0 ? '/belligod.png' : '/carva.jpg'}
+                  alt={`Sponsor logo ${index + 1}`}
                   fill
                   className="object-contain"
                 />
@@ -750,15 +750,111 @@ function Encabezados() {
       <AnimatedBackground />
       <div className="space-y-8">
         <EncabezadoSeccion titulo="Noticias" icono={<Newspaper className="h-full" />} />
-        <EncabezadoSeccion titulo="Equipos" icono={<Users className="h-full"/>} />
-        <EncabezadoSeccion titulo="Calendario" icono={<Calendar className="h-full"/>} />
+        <EncabezadoSeccion titulo="Equipos" icono={<Users className="h-full" />} />
+        <EncabezadoSeccion titulo="Calendario" icono={<Calendar className="h-full" />} />
       </div>
     </>
   )
 }
 
+function Category({ name, teamPhoto, description }) {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [])
+
+  return (
+    <div className="min-h-screen bg-gray-800 text-white overflow-hidden">
+      <div className="container mx-auto px-4 py-12 relative">
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          animate={{
+            backgroundPosition: `${mousePosition.x / 50}px ${mousePosition.y / 50}px`
+          }}
+          style={{
+            backgroundImage: 'radial-gradient(circle, rgba(255,0,0,0.1) 1px, transparent 1px)',
+            backgroundSize: '50px 50px'
+          }}
+        />
+
+        <motion.h1
+          className="text-2xl md:text-5xl font-extrabold mb-8 text-center relative z-10"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {'Categoría Senior'}
+        </motion.h1>
+
+        <motion.div
+          className="w-24 h-1 bg-red-600 mx-auto mb-12"
+          initial={{ width: 0 }}
+          animate={{ width: 96 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        />
+
+        <motion.div
+          className="relative w-full h-[60vh] mb-12"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <Image
+            src={'/seleccion.jpg  '}
+            alt={`Equipo de ${name}`}
+            layout="fill"
+            objectFit="contain"
+            className="rounded-lg"
+          />
+        </motion.div>
+
+        <motion.p
+          className="text-xl md:text-2xl text-center mb-12 max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          {description}
+        </motion.p>
+
+        <motion.div
+          className="flex justify-center space-x-6"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <motion.button
+            className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Nuestros Proyectos
+          </motion.button>
+          <motion.button
+            className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Contactar
+          </motion.button>
+        </motion.div>
+      </div>
+    </div>
+  )
+}
+
 export default function Main() {
   return <main>
+    <Category />
     <GallerySection />
     <MatchCalendarSection />
     <TestimonialsSection />
@@ -766,8 +862,8 @@ export default function Main() {
     <NewsSection />
     <SponsorsComponent />
     <SponsorLogos />
-    <ResultadosPasados/>
-    <ResultadosPasadosv2/>
+    <ResultadosPasados />
+    <ResultadosPasadosv2 />
     <SponsorLogosV2 />
     <CatalogoProductos />
     <Encabezados />

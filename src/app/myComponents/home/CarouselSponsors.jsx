@@ -13,7 +13,7 @@ import { ArrowRight } from 'lucide-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { useEffect, useState } from "react"
 
-import NewsService from '../services/NewsService.js'
+import NewsService from '../../../services/NewsService.js'
 import { useRouter } from "next/navigation.js"
 
 
