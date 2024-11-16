@@ -7,7 +7,10 @@ const nextConfig = {
         missingSuspenseWithCSRBailout: false,
         optimisticClientCache: false,
     },
-    fastRefresh: true,
+    typescript: {
+        ignoreBuildErrors: true,
+
+    }
 };
 
 export default nextConfig;

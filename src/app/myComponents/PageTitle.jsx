@@ -34,10 +34,11 @@ export default function PageTitle({ titulo, icono }) {
         <>
             <AnimatedBackground />
             <div className="relative overflow-hidden font-playfair">
-                <div className="animate-gradient bg-gradient-to-r from-gray-950 via-red-900 to-gray-950 text-white py-8 px-4 sm:px-6 lg:px-8">
-                    <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-center">
-                        {icono && <div className="w-10 h-10 mr-1 text-red-400">{icono}</div>}
-                        <h2 className="text-3xl sm:text-4xl font-bold tracking-wide">{titulo}</h2>
+                <div className="animate-gradient bg-gradient-to-r from-gray-950 via-red-900 to-gray-950 text-white py-8 sm:px-6 lg:px-8">
+                    <div className="relative z-10 w-full mx-auto flex items-center justify-center">
+                        {icono && <div className="w-8 h-8 md:w-10 md:h-10 mr-2 text-red-400 flex justify-center">{icono}</div>}
+                        <h2 className="text-3xl sm:text-4xl sm:mx-4 font-bold tracking-wide">{titulo}</h2>
+                        {icono && <div className="w-8 h-8 md:w-10 md:h-10 ml-2 text-red-400 flex justify-center">{icono}</div>}
                     </div>
                 </div>
                 <div className="absolute bottom-0 left-0 w-full h-2 bg-red-500 transform -skew-x-12"></div>

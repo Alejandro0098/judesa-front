@@ -42,8 +42,8 @@ export default function Separator ({animated}) {
     return (
       <div className="flex items-center justify-center py-6 bg-gray-800">
         <div className="h-0.5 bg-red-600 rounded-full w-1/3"></div>
-        <div className="mx-4 w-8 h-8 bg-red-600 rounded-full flex items-center justify-center">
-          <div className="w-6 h-6 bg-gray-800 rounded-full"></div>
+        <div className="mx-4 w-5 h-5 md:h-6 md:w-6 bg-red-600 rounded-full flex items-center justify-center">
+          <div className="w-3 h-3 md:h-4 md:w-4 bg-gray-800 rounded-full"></div>
         </div>
         <div className="h-0.5 bg-red-600 rounded-full w-1/3"></div>
       </div>

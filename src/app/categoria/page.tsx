@@ -3,13 +3,15 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Tab } from '@headlessui/react'
-import { ChevronLeft, ChevronRight, MapPin, Calendar, Clock } from 'lucide-react'
+import { ChevronLeft, ChevronRight, MapPin, Calendar, Clock, Star } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import CategoriesService from '../../services/CategoriesService.js'
 import { useParams } from 'next/navigation'
 import { useRouter } from 'next/navigation.js'
 import Separator from '../myComponents/Separator.jsx'
+import PageTitle from '../myComponents/PageTitle.jsx'
+
 
 // Datos de ejemplo (mantenidos sin cambios)
 
@@ -63,9 +65,10 @@ export default function TeamPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-200 to-gray-300">
-      <header className="pt-8 sm:px-6 lg:px-8 mb-12 flex flex-col align-center bg-gray-800 shadow-md">
-        <motion.h1
+    <div className="min-h-screen bg-gradient-to-br from-indigo-300 to-gray-400">
+      <PageTitle titulo={`Categoría ${data.category.name}`} icono={<Star className='h-full' />}/>
+      <header className="pt-8 sm:px-6 lg:px-8 lg:mb-12 flex flex-col align-center bg-gray-800 bg-gra shadow-md">
+        {/* <motion.h1
           className="text-3xl py-5 text-center flex flex-col font-extrabold text-center text-white drop-shadow-md"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,7 +80,7 @@ export default function TeamPage() {
             </p>
           </div>
 
-        </motion.h1>
+        </motion.h1> */}
         {/* <SmallSeparator /> */}
         <motion.div
           className="mt-6 max-w-3xl mx-auto"
@@ -85,12 +88,12 @@ export default function TeamPage() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <img src={'/seleccion.jpg'} alt="Foto del equipo" width={600} height={400} className="rounded-lg shadow-xl w-full h-auto px-4" />
+          <img src={'/seleccion.jpg'} alt="Foto del equipo" width={600} height={400} className="w-full h-auto px-4" />
         </motion.div>
         <Separator animated={false}/>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 xl:px-24">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 xl:px-24 bg-white bg-opacity-20 p-8 rounded-xl mb-12">
         <Tab.Group>
           <Tab.List className="flex p-1 space-x-1 rounded-xl mb-8 overflow-x-auto bg-blue-900/20">
             <Tab className={({ selected }) =>
@@ -137,7 +140,7 @@ export default function TeamPage() {
                     {data.team.players.map((player, index) => (
                       <div key={player.number} className="flex flex-col items-center space-y-2 justify-between">
                         <img src={index % 2 == 0 ? '/categories/senior/fede.jpg' : '/categories/senior/carva.jpg'} alt={player.name} width={200} height={200} className="w-32 h-32 object-cover" />
-                        <h3 className="text-lg font-semibold text-center text-base">{player.name}</h3>
+                        <h3 className="text-sm md:text-base font-semibold text-center text-base">{player.name}</h3>
                         <p className="text-xs text-gray-600 text-center">{player.position} - #{player.number}</p>
                       </div>
                     ))}

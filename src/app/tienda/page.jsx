@@ -64,10 +64,10 @@ function Tienda() {
         <PageTitle titulo="Tienda" icono={<ShoppingBagIcon className="h-full" />} />
         <NoOnlineShop/>
         <div className="mb-12 md:mx-4 md:mx-16 flex flex-col">
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4 p-4">
+          <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4 px-4 lg:px-20">
             {products.map((product, index) => (
               <Card key={index} className="bg-maroon-50 shadow-xl bg-white rounded-none">
-                <CardContent className="p-4 flex flex-col gap-2 h-full rounded-none" style={{ 'boxShadow': 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px' }}>
+                <CardContent className="p-4 flex flex-col gap-2 h-full" style={{ 'boxShadow': 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px' }}>
                   <img
                     alt={product.name}
                     className="w-full h-48 object-cover rounded-lg mb-4"
