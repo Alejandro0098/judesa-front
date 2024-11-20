@@ -39,8 +39,8 @@ export default function Component() {
   return (
       <Card className="w-11/12 md:w-fit self-center bg-gray-900 text-white mx-1">
         <CardHeader className="p-4 sm:p-6">
-          <CardTitle className="text-lg sm:text-xl text-red-600 flex items-center">
-            <Info className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+          <CardTitle className="text-lg sm:text-xl text-white flex items-center">
+            <Info className="mr-2 h-4 w-4 sm:h-5 sm:w-5" color='red' />
             Información de pedidos
           </CardTitle>
           <CardDescription className="text-gray-300 text-sm sm:text-base">

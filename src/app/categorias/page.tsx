@@ -30,7 +30,7 @@ function Categorias() {
 
   return (
     <>
-      <div className="flex flex-col min-h-screen bg-gray-800">
+      <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-500 via-red-700/50 to-gray-500">
         <main className="flex-grow w-full">
           {/* <h1 className="text-3xl font-bold mb-8 text-center">Categorías de Fútbol Sala</h1> */}
           <PageTitle titulo="Categorías" icono={<Users className="h-full"/>}/>

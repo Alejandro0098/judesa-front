@@ -57,10 +57,10 @@ export default function NewsPagination() {
 
   return (
     <>
-      <main className='bg-gray-800 flex flex-col'>
+      <main className='bg-gradient-to-br from-gray-500 via-red-700/50 to-gray-500 flex flex-col'>
         <div className="flex flex-col">
             <PageTitle titulo="Noticias" icono={<Newspaper className="h-full"/>}/>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 md:p-16 mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 md:p-12 mt-4 xl:px-36">
             {currentNews.map((news) => (
               <Card key={news.id} className="flex flex-col card-item" onClick={() => router.push(`\\noticia?id=${news.id}`)}>
                 <CardHeader className="pt-5">
@@ -80,7 +80,7 @@ export default function NewsPagination() {
               </Card>
             ))}
           </div>
-          <div className="flex justify-center items-center mt-8 md:mt-0 mb-16 space-x-4 bg-gray-500 w-fit self-center p-5 rounded-xl shadow-xl">
+          <div className="flex justify-center items-center mt-8 md:mt-0 mb-16 space-x-4 bg-stone-700 w-fit self-center p-5 rounded-xl shadow-xl">
             <Button
               onClick={handlePrevPage}
               disabled={currentPage === 1}
@@ -89,7 +89,7 @@ export default function NewsPagination() {
             >
               <ChevronLeft className="mr-2 h-4 w-4" /> Anterior
             </Button>
-            <span className="text-black text-xs md:text-sm">
+            <span className="text-white text-xs md:text-sm">
               Página {currentPage} de {totalPages}
             </span>
             <Button

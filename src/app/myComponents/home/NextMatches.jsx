@@ -34,7 +34,7 @@ export default function NextMatches() {
   }
 
   return (
-    <ScrollArea className="whitespace-nowrap rounded-md flex hover:cursor-pointer">
+    <ScrollArea className="whitespace-nowrap rounded-md flex">
       <div className="flex self-center w-max space-x-4 py-4">
         {data?.map((resultado, index) => (
           <div key={index} className="w-[270px] flex-shrink-0 rounded-lg p-4 bg-white text-black">

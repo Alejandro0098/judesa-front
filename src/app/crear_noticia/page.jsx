@@ -26,6 +26,21 @@ function mapTagName(tag) {
   return map[tag];
 }
 
+function mapSpecialText(option) {
+  const map = {
+    "default": "",
+    "bold": " [NEG]  [/NEG]",
+    "underline": " [SUB]  [/SUB]",
+    "italic": " [CUR]  [/CUR]",
+    "line-through": " [TACH]  [/TACH]",
+  }
+
+  const isValidOption = option in map;
+  console.log(option in map, map[option])
+
+  return isValidOption ? map[option] : map.default;
+}
+
 export default function WebBuilder() {
   const [elements, setElements] = useState([])
   const [selectedType, setSelectedType] = useState(null)
@@ -68,9 +83,17 @@ export default function WebBuilder() {
       const range = selection.getRangeAt(0)
       const start = range.startOffset
       const end = range.endOffset
+      console.log(start, end)
       setSelectedTextStart(start)
       setSelectedTextEnd(end)
     }
+  }
+
+  const addSpecialText = (option) => {
+    const currentText = currentElement?.content || ''
+    console.log(currentText + mapSpecialText(option))
+
+    setCurrentElement({ ...currentElement, content: currentText + mapSpecialText(option) })
   }
 
   const insertLink = () => {
@@ -84,6 +107,33 @@ export default function WebBuilder() {
     setIsLinkDialogOpen(false)
     setLinkUrl('')
     setLinkText('')
+  }
+
+  const calculateYoutubeId = (url) => {
+    try {
+      const splitedUrl = url.split("/");
+
+      if (splitedUrl.includes("live") || splitedUrl.includes("youtu.be")) {
+        const stringWithId = splitedDomain.at(-1)
+        const questionMarkPosition = stringWithId.indexOf("?")
+
+        return questionMarkPosition == -1 
+          ? stringWithId 
+          : stringWithId.substring(0, questionMarkPosition) 
+      }
+
+      const splittedUrlParams = url.split("?");
+
+      return splittedUrlParams[1].split("&").reduce((acc, cur) => {
+        const [key, id] = cur.split("=");
+        acc[key] = id;
+        return acc
+      }, {}).v
+
+    } catch (e) {
+      console.error(e)
+      return 'undefined'
+    }
   }
 
   const renderForm = () => {
@@ -101,7 +151,7 @@ export default function WebBuilder() {
                 type="button"
                 size="sm"
                 variant={isBold ? "default" : "outline"}
-                onClick={() => setIsBold(!isBold)}
+                onClick={() => addSpecialText("bold")}
               >
                 <Bold className="h-4 w-4" />
               </Button>
@@ -109,7 +159,7 @@ export default function WebBuilder() {
                 type="button"
                 size="sm"
                 variant={isUnderline ? "default" : "outline"}
-                onClick={() => setIsUnderline(!isUnderline)}
+                onClick={() => addSpecialText("underline")}
               >
                 <Underline className="h-4 w-4" />
               </Button>
@@ -199,9 +249,9 @@ export default function WebBuilder() {
               id="src"
               value={currentElement?.attributes?.src || ''}
               onChange={(e) => {
-                const videoId = e.target.value.split('v=')[1]
-                const embedUrl = `https://www.youtube.com/embed/${videoId}`
-                setCurrentElement({ ...currentElement, attributes: { ...currentElement.attributes, src: embedUrl } })
+                setCurrentElement({ ...currentElement, attributes: { 
+                  ...currentElement.attributes, 
+                  src: `https://www.youtube.com/embed/${calculateYoutubeId(e.target.value)}`}})
               }}
             />
           </div>

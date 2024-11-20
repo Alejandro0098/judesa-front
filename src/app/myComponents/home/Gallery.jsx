@@ -70,8 +70,12 @@ export default function Gallery() {
     }
 
     return (
-        <div className="flex flex-col bg-white w-full h-full p-8">
-            <h2 className="w-full self-center bg-white text-xl md:text-3xl font-bold text-center pb-6"><Images className='inline mr-5' /><p className='inline'>Galería de Fotos</p> <Images className='inline ml-2' /></h2>
+        <div className="flex flex-col bg-white w-full h-full px-4 pt-8 sm:px-8">
+            <h2 className="w-full self-center bg-white text-2xl md:text-3xl font-bold text-center pb-6">
+                <Images className='inline mr-5' />
+                <p className='inline'>Galería de Fotos</p> 
+                <Images className='inline ml-2' />
+            </h2>
             <div className="md:pb-8 md:px-4 pt-4 bg-white grid grid-cols-2 md:grid-cols-3 gap-4 h-full w-full" >
                 {imagenes.slice(0, imagenesMostradas).map((imagen, index) => (
                     <div key={index} className=" relative aspect-video cursor-pointer overflow-hidden rounded-lg transition-transform hover:scale-105" style={{ boxShadow: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px' }}>

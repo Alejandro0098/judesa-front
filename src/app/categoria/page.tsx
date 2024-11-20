@@ -65,7 +65,7 @@ export default function TeamPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-300 to-gray-400">
+    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-indigo-200 to-blue-300">
       <PageTitle titulo={`Categoría ${data.category.name}`} icono={<Star className='h-full' />}/>
       <header className="pt-8 sm:px-6 lg:px-8 lg:mb-12 flex flex-col align-center bg-gray-800 bg-gra shadow-md">
         {/* <motion.h1
@@ -93,7 +93,7 @@ export default function TeamPage() {
         <Separator animated={false}/>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 xl:px-24 bg-white bg-opacity-20 p-8 rounded-xl mb-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 xl:px-24 bg-white bg-opacity-70 p-8 rounded-xl mb-12">
         <Tab.Group>
           <Tab.List className="flex p-1 space-x-1 rounded-xl mb-8 overflow-x-auto bg-blue-900/20">
             <Tab className={({ selected }) =>

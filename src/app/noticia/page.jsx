@@ -55,12 +55,12 @@ function New() {
     </main>
   }
 
-  return <main className="bg-gray-800 flex flex-col gap-12 min-w-5xl">
+  return <main className=" bg-gradient-to-br from-gray-500 via-red-700/50 to-gray-500 flex flex-col gap-12 min-w-5xl">
     <article className="max-w-5xl px-8 md:px-16 py-5 bg-white lg:my-4 lg:rounded-lg shadow-lg self-center w-5xl">
       <button className="bg-stone-700 text-white text-sm sm:text-base rounded px-2 py-1 mb-5" onClick={() => router.push('/noticias')} >Noticias</button>
       {currentNew && NewHeader(currentNew.new)}
       <div className="prose max-w-none flex flex-col gap-8 mb-5">
-        {currentNew?.tags?.map(element => renderElement(element))}
+        {currentNew?.tags?.map((element, index) => renderElement(element, index))}
       </div>
       {currentNew.tags && <h1
         className="flex text-xl gap-2 font-bold hover:cursor-pointer hover:animate-pulse py-4 "
@@ -87,14 +87,14 @@ function NewHeader(currentNew) {
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">{currentNew.title}</h1>
         <p className="text-lg sm:text-xl text-gray-600 mb-4">{currentNew.subtitle}</p>
         <time dateTime="2023-07-15" className="text-sm text-gray-500">
-          Publicada en {currentNew.creation_date}
+          Publicada el {currentNew.creation_date}
         </time>
       </header>
     </>
   )
 }
 
-const renderElement = (element) => {
+const renderElement = (element, i) => {
   const applyStyles = (content) => {
     let styledContent = content
     if (element.styles?.bold) styledContent = `<strong>${styledContent}</strong>`
@@ -104,20 +104,20 @@ const renderElement = (element) => {
 
   switch (element.type) {
     case 'p':
-      return <p className="flex items-center">{applyStyles(element.content || '')}</p>
+      return <p key={i} className="flex items-center md:text-lg">{applyStyles(element.content || '')}</p>
     case 'h1':
-      return <h1 className="text-2xl font-bold flex items-center">{applyStyles(element.content || '')}</h1>
+      return <h1 key={i} className="text-2xl font-bold flex items-center">{applyStyles(element.content || '')}</h1>
     case 'h2':
-      return <h2 className="text-xl font-semibold flex items-center">{applyStyles(element.content || '')}</h2>
+      return <h2 key={i} className="text-xl font-semibold flex items-center">{applyStyles(element.content || '')}</h2>
     case 'a':
       return (
-        <div className="flex items-center">
+        <div className="flex items-center" key={i}>
           <a href={element.attributes?.href} className="text-blue-600 hover:underline">{applyStyles(element.content || '')}</a>
         </div>
       )
     case 'ul':
       return (
-        <div className="flex items-start">
+        <div className="flex items-start" key={i}>
           <ul className="list-disc list-inside">
             {element.children?.map((child, childIndex) => <li key={childIndex}>{applyStyles(child.content || '')}</li>)}
           </ul>
@@ -125,29 +125,29 @@ const renderElement = (element) => {
       )
     case 'ol':
       return (
-        <div className="flex items-start">
+        <div className="flex items-start" key={i}>
           <ol className="list-decimal list-inside">
             {element.children?.map((child, childIndex) => <li key={childIndex}>{applyStyles(child.content || '')}</li>)}
           </ol>
         </div>
       )
     case 'li':
-      return <li className="flex items-center">{applyStyles(element.content || '')}{deleteButton}</li>
+      return <li className="flex items-center" key={i}>{applyStyles(element.content || '')}{deleteButton}</li>
     case 'img':
       return (
-        <div className="flex flex-col">
-          <img src={element.attributes?.src} alt={element.attributes?.alt} className="max-w-full h-auto self-center" />
+        <div className="grid justify-center my-4" key={i}>
+          <img src={element.attributes?.src} alt={element.attributes?.alt} className="max-h-[600px] max-w-full" />
         </div>
       )
     case 'iframe':
       return (
-        <div className="flex items-start">
+        <div className="flex items-start" key={i}>
           <iframe src={element.attributes?.src} className="w-full aspect-video" allowFullScreen></iframe>
         </div>
       )
     case 'table':
       return (
-        <div className="flex items-start">
+        <div className="flex items-start" key={i}>
           <Table>
             <TableHeader>
               <TableRow>

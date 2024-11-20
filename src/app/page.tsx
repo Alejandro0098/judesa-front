@@ -84,9 +84,9 @@ function Home() {
           <section id="noticias" className="bg-neutral-200 st " style={{ backgroundAttachment: 'fixed', backgroundImage: 'url(https://editorial.uefa.com/resources/0271-143b4b1687c2-a9552d6fda12-1000/amsterdam_previews_uefa_futsal_euro_2022.jpeg)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
             <div className="px-4 md:px-24 md:px-6  flex flex-col align-center w-full  bg-black bg-opacity-40 py-7">
               <h2 onClick={() => window.location = '/noticias'} className="bg-white self-center hover:animate-pulse w-max text-3xl font-bold tracking-tighter text-4xl text-center p-4 rounded-xl flex gap-2 hover:cursor-pointemy-5 self-center hover:cursor-pointer my-5">
-                <span className='underline underline-offset-8 text-4xl text-black mr-2'>Últimas noticias</span><ArrowRight className='self-center bg-white rounded-full' />
+                <span className='underline underline-offset-8 text-3xl text-black mr-2'>Últimas noticias</span><ArrowRight className='self-center bg-white rounded-full' />
               </h2>
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 my-8">
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 my-8 xl:px-24">
                 <LatestNews />
               </div>
         <section id="patrocinadores" className="pb-12" >
@@ -103,12 +103,12 @@ function Home() {
           </section>
         </Suspense>
 
-        <div className="lg:grid grid-cols-2 gap-8 px-4 py-12">
+        <div className="xl:grid grid-cols-2 gap-8 px-4 md:px-16 py-12 lg:px-24">
           <section>
             <Gallery />
           </section>
-          <section className="bg-white shadow-xl ">
-            <div className="w-full accordion-wrapper flex flex-col justify-center align-center bg-blue-200">
+          <section className="bg-white h-full">
+            <div className="w-full h-full justify-center align-center bg-blue-200  bg-red-400">
               <MediaComponent />
             </div>
           </section>
